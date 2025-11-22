@@ -1,8 +1,8 @@
-import { ProductCardProps } from "@/types/product"
-import Image from "next/image"
-import { formatPrice } from "../../utils/formatPrice"
-import StarRating from "./StarRating"
-import iconHeart from "/public/icons-header/icon-heart.svg"
+import Image from "next/image";
+import iconHeart from "/public/icons-header/icon-heart.svg";
+import { ProductCardProps } from "@/types/product";
+import { formatPrice } from "../../utils/formatPrice";
+import StarRating from "./StarRating";
 
 const cardDiscountPercent = 6;
 
