@@ -1,6 +1,6 @@
-import ProductCard from "./ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { ProductCardProps } from "@/types/product";
-import ViewAllButton from "./ViewAllButton";
+import ViewAllButton from "@/components/ViewAllButton";
 
 const Purchases = async () => {
   let purchases: ProductCardProps[] = [];

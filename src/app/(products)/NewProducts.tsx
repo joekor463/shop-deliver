@@ -1,7 +1,7 @@
-import ProductCard from "./ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { ProductCardProps } from "@/types/product";
-import { shuffleArray } from "../../utils/shuffleArray";
-import ViewAllButton from "./ViewAllButton";
+import { shuffleArray } from "../../../utils/shuffleArray";
+import ViewAllButton from "@/components/ViewAllButton";
 
 const NewProducts = async () => {
   let products: ProductCardProps[] = [];

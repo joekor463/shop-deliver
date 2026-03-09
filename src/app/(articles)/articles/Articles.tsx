@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Article } from "@/types/articles";
-import ViewAllButton from "./ViewAllButton";
+import ViewAllButton from "@/components/ViewAllButton";
 
 const Articles = async () => {
   let articles: Article[] = [];
