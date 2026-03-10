@@ -2,6 +2,12 @@
 import fetchProductsByCategory from "../fetchproducts";
 import ProductsSection from "../ProductsSection";
 
+export const metadata = {
+  title: 'Акции магазина "Северяночка"',
+  description: "Акционные товары магазина ",
+};
+
+
 const AllActions = async () => {
   
   try {
