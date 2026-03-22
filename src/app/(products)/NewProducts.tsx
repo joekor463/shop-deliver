@@ -1,4 +1,5 @@
 
+import { shuffleArray } from "../../../utils/shuffleArray";
 import fetchProductsByCategory from "./fetchproducts";
 import ProductsSection from "./ProductsSection";
 
@@ -6,7 +7,8 @@ const NewProducts = async () => {
   
   try {
    
-    const products = await fetchProductsByCategory("new")
+    let products = await fetchProductsByCategory("new")
+    products = shuffleArray(products)
 
     return <ProductsSection 
       title = "Новинки"

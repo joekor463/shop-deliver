@@ -2,7 +2,7 @@
 import fetchPurchases from "../fetchPurchases";
 import ProductsSection from "@/app/(products)/ProductsSection";
 
-const AllNew = async () => {
+const AllPurchases = async () => {
   
   try {
    
@@ -18,4 +18,4 @@ const AllNew = async () => {
   }
 }
 
-export default AllNew;
+export default AllPurchases;
