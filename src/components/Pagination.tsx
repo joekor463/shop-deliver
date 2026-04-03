@@ -1,7 +1,6 @@
 "use client"
 
 import { PaginationProps } from "@/types/paginationProps"
-import { number } from "motion"
 import Link from "next/link"
 
  const createPageUrl = (basePath: string, params: URLSearchParams, page: number) => {
@@ -31,7 +30,7 @@ const getVisiblePages = (totalPages: number, currentPage: number) => {
 
     if (end < totalPages - 1) pages.push("...")
         
-    if (end < totalPages) pages.push(totalPages)  
+    if (end < totalPages) pages.push(Math.round(totalPages))  
 
     console.log(pages)        
         
@@ -45,45 +44,52 @@ const Pagination = ({
     basePath, 
     itemsPerPage, 
     searchQuery} : PaginationProps) => {
-        const totalPages = Math.ceil(totalItems) / itemsPerPage
+        const totalPages = Math.ceil(totalItems / itemsPerPage)
         const params = new URLSearchParams(searchQuery)
         const visiblePages = getVisiblePages(totalPages, currentPage)
 
        
 
-    const buttonBase = "px-4 py-2 rounded duration-300" 
+    const buttonSize = "w-5 h-5 md:w-10 md:h-10 flex items-center justify-center rounded duration-300" 
     const buttonActive = "bg-[#ff6633] text-white hover:bg-[#70c05b]"
-    const buttonDisabled = "opacity-50 cursor-not-allowed"       
+    const buttonDisabled = "opacity-50 cursor-not-allowed"
+    const pageButtonClass = `border border-[#ff6633] ${buttonSize}`       
 
     return (
-        <div className="flex justify-center gap-4 mt-8 mb-12">
+        <div className="flex justify-center mt-10 mb-20 text-white text-sm md: text-base">
+            <nav className="flex gap-1 md:gap-2 items-center">
             <Link 
                 href={createPageUrl(basePath, params, 1)} 
-                onClick={(e) => {
-                    if (currentPage === 1) e.preventDefault()
-                }}
+                
                 aria-disabled={currentPage === 1}
-                className={`${buttonBase} ${
+                tabIndex={currentPage === 1 ? -1 : undefined}  
+                className={`${buttonSize} ${
                     currentPage === 1 ? buttonDisabled : buttonActive
-                }`}               
+                }`}  
+                           
             >
-                В начало
+                &laquo
             </Link>
             <Link 
                 href={createPageUrl(basePath, params, currentPage - 1)} 
-                onClick={(e) => {
-                    if (currentPage === 1) e.preventDefault()
-                }}
+                
                 aria-disabled={currentPage === 1}
-                className={`${buttonBase} ${
+                tabIndex={currentPage === 1 ? -1 : undefined}
+                className={`${buttonSize} ${
                     currentPage === 1 ? buttonDisabled : buttonActive
                 }`}
-            >Назад</Link>
+
+            >
+                &lsaquo
+            </Link>
 
         {visiblePages.map((page, index) => {
             if (page === "...") {
                 return (
-                    <span key={`ellipsis-${index}`}>...</span>
+                    <span 
+                        key={`ellipsis-${index}`}
+                        className={`${buttonSize} text-[#ff6633]`}
+                    >...</span>
                 )
             }
             return <Link 
@@ -95,27 +101,26 @@ const Pagination = ({
 
             <Link 
                 href={createPageUrl(basePath, params, currentPage + 1)} 
-                onClick={(e) => {
-                    if (currentPage === totalPages) e.preventDefault()
-                }}
+                
                 aria-disabled={currentPage === totalPages}
-                className={`${buttonBase} ${
+                tabIndex={currentPage === totalPages ? -1 : undefined}  
+                className={`${buttonSize} ${
                     currentPage === totalPages ? buttonDisabled : buttonActive
                 }`}
-                >Вперед
+                >&rsaquo
             </Link>
             <Link 
                 href={createPageUrl(basePath, params, totalPages)} 
-                onClick={(e) => {
-                    if (currentPage === 1) e.preventDefault()
-                }}
+               
                 aria-disabled={currentPage === totalPages}
-                className={`${buttonBase} ${
+                tabIndex={currentPage === totalPages ? -1 : undefined}  
+                className={`${buttonSize} ${
                     currentPage === totalPages ? buttonDisabled : buttonActive
                 }`}
             >
-                В конец
+                &raquo 
             </Link>
+            </nav>
         </div>
         
     )
