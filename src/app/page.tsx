@@ -1,8 +1,8 @@
 import Actions from "./(products)/Actions";
-import Articles from "./(articles)/articles/Articles";
+import Articles from "@/app/(articles)/Articles";
 import Maps from "@/components/Maps";
 import NewProducts from "./(products)/NewProducts";
-import Purchases from "./(user)/purchases/Purchases";
+import Purchases from "@/app/(user)/Purchases";
 import Slider from "@/components/Slider/Slider";
 import SpecialOffers from "@/components/SpecialOffers";
 

@@ -1,4 +1,4 @@
-import fetchArticles from "./fetchArticles";
+import fetchArticles from "../fetchArticles";
 import GenericListPage from "@/app/(products)/GenericListPage";
 
 export const metadata = {
@@ -7,22 +7,22 @@ export const metadata = {
 };
 
 const AllArticles = async ({
-    searchParams
-  }: {
-    searchParams: Promise<{page?: string; 
-    itemsPerPage?: string }>
-  }) => {
-    
-      return (<GenericListPage 
-        searchParams={searchParams} 
-        props={{
-          fetchData: () => fetchArticles(),
-          pageTitle: "Все статьи",
-          basePath: "/articles",
-          errorMessage: "Ошибка: не удалось загрузить cтатьи",
-          contentType: "articles"
-        }}
-      />)
-  }
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string; itemsPerPage?: string }>;
+}) => {
+  return (
+    <GenericListPage
+      searchParams={searchParams}
+      props={{
+        fetchdata: () => fetchArticles(),
+        pageTitle: " Все статьи",
+        basePath: "/articles",
+        errorMessage: "Ошибка: не удалось загрузить статьи",
+        contentType: "articles",
+      }}
+    />
+  );
+};
 
 export default AllArticles;
