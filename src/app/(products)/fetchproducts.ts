@@ -1,25 +1,39 @@
-import { ProductCardProps } from "@/types/product";
-
-const fetchProductsByCategory = async (category: string) => {
+const fetchProductsByTag = async (
+  tag: string,
+  options?: {
+    randomLimit?: number;
+    pagination?: { startIdx: number; perPage: number };
+  }
+) => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/products?category=${category}`,
-      { next: { revalidate: 3600 } }
-    );
+    const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+    url.searchParams.append("tag", tag);
+
+    if (options?.randomLimit) {
+      url.searchParams.append("randomLimit", options.randomLimit.toString());
+    } else if (options?.pagination) {
+      url.searchParams.append(
+        "startIdx",
+        options.pagination.startIdx.toString()
+      );
+      url.searchParams.append("perPage", options.pagination.perPage.toString());
+    }
+
+    const res = await fetch(url.toString(), { next: { revalidate: 3600 } });
+
     if (!res.ok)
-      throw new Error(`Серверная ошибка получения продуктов ${category}`);
+      throw new Error(`Серверная ошибка получения продуктов ${tag}`);
 
-    const products: ProductCardProps[] = await res.json();
+    const data = await res.json();
 
-    const availableProducts = products.filter(
-      (product) => product.quantity > 0
-    );
-
-    return availableProducts;
+    return {
+      items: data.products || data,
+      totalCount: data.totalCount || data.length,
+    };
   } catch (err) {
-    console.error(`Ошибка в компоненте: ${category}`, err);
+    console.error(`Ошибка в компоненте: ${tag}`, err);
     throw err;
   }
 };
 
-export default fetchProductsByCategory;
+export default fetchProductsByTag;

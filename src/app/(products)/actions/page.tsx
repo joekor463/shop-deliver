@@ -1,4 +1,4 @@
-import fetchProductsByCategory from "../fetchProducts";
+import fetchProductsByTag from "../fetchProducts";
 import GenericListPage from "../GenericListPage";
 
 export const metadata = {
@@ -15,7 +15,7 @@ const AllActions = async ({
     <GenericListPage
       searchParams={searchParams}
       props={{
-        fetchData: () => fetchProductsByCategory("actions"),
+        fetchData: ({ pagination: { startIdx, perPage } }) => fetchProductsByTag("actions", { pagination: { startIdx, perPage } }),
         pageTitle: " Все акции",
         basePath: "/actions",
         errorMessage: "Ошибка: не удалось загрузить акции",

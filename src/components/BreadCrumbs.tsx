@@ -11,7 +11,7 @@ import { PATH_TRANSLATION } from "../../utils/pathTranslations"
 const BreadCrumbs = () => {
     const pathName = usePathname()
     
-    if (pathName === '/') return null
+    if (pathName === '/' || pathName === '/search') return null
 
     const pathSegment = pathName.split("/").filter((segment) =>  segment !== "")
 
