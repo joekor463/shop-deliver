@@ -11,7 +11,7 @@ import HighLightText from "./HighLightText";
 
 
 
-const InputBlock = () => {
+const InputBlock = ({onFocusChangeAction}: {onFocusChangeAction: (focused: boolean) => void}) => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState("")
@@ -54,17 +54,23 @@ const InputBlock = () => {
 
   const handleInputFocus = () => {
     setIsOpen(true)
+    onFocusChangeAction(true)
   }  
 
   const resetSearch = () => {
     setIsOpen(false)
     setQuery("")
+    
   }
   const handleSearch = () => {
     if(query.trim()) {
       router.push(`/search?q=${encodeURIComponent(query)}`)
       resetSearch()
     }
+  }
+
+  const handleInputBlur = () => {
+    onFocusChangeAction(false)
   }
 
   return (
@@ -83,6 +89,7 @@ const InputBlock = () => {
           text-[#8f8f8f] text-base "
         onFocus={handleInputFocus}  
         onChange={(e) => setQuery(e.target.value)}        
+        onBlur={handleInputBlur}
         />
         <button className="absolute top-2 right-2 w-6 h-6 cursor-pointer" type="submit">
           <Image src={iconSearch} alt="Поиск" width={24} height={24}
