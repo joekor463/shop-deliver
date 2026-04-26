@@ -63,7 +63,7 @@ const InputBlock = () => {
   const handleSearch = () => {
     if(query.trim()) {
       router.push(`/search?q=${encodeURIComponent(query)}`)
-      setIsOpen(false)
+      resetSearch()
     }
   }
 
@@ -77,6 +77,7 @@ const InputBlock = () => {
         }}>
           <input
         type="text"
+        value={query}
         placeholder="Найти товар"
         className="w-full h-10  p-2 outline-none outline-none
           text-[#8f8f8f] text-base "

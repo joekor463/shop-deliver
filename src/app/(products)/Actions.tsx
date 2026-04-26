@@ -1,4 +1,4 @@
-import fetchProductsByTag from "./fetchProducts";
+import fetchProductsByTag from "./fetchproducts";
 import ProductsSection from "../../components/ProductsSection";
 import { CONFIG } from "../../../config/config";
 

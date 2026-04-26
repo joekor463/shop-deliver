@@ -1,3 +1,4 @@
+"use client"
 import UserBlock from "./UserBlock";
 import LogoBlock from "./LogoBlock";
 import SearchBlock from "./SearchBlock";
