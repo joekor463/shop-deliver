@@ -1,3 +1,5 @@
+import ErrorComponent from "@/components/ErrorComponent";
+
 const CategoryPage = async ({
   params,
 }: {
@@ -8,8 +10,11 @@ const CategoryPage = async ({
   try {
     category = (await params).category;
   } catch (error) {
-    console.error("Ошибка получения категории:", error);
-  }
+      return (
+        <ErrorComponent error={error instanceof Error ? error: new Error(String(error))}
+        userMessage="Ошибка получения категорий"/>
+      );
+    }
   return <div>Страница категории: {category}</div>;
 };
 

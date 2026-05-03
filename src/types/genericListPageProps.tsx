@@ -14,7 +14,6 @@ export interface GenericListPageProps {
         pagination: { startIdx: number, perPage: number}
     }) => Promise<PaginatedResponse>
     pageTitle: string
-    basePath: string
-    errorMessage: string
+    basePath: string    
     contentType?: "articles"
 }
