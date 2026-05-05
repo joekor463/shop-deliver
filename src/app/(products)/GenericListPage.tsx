@@ -16,23 +16,31 @@ const GenericListPage = async ({
 }) => {
   const params = await searchParams;
   const page = params?.page;
-  const itemsPerPage = params?.itemsPerPage || CONFIG.ITEMS_PER_PAGE;
+  const defaultItemsPerPage = props.contentType === "category" 
+    ? CONFIG.ITEMS_PER_PAGE_CATEGORY 
+    : CONFIG.ITEMS_PER_PAGE
+  const itemsPerPage = params?.itemsPerPage || defaultItemsPerPage;
 
   const currentPage = Number(page) || 1;
   const perPage = Number(itemsPerPage);
   const startIdx = (currentPage - 1) * perPage;
 
   try {
-    const {items, totalCount} = await props.fetchData({ pagination: { startIdx, perPage } });
+    const {items, totalCount} = await props.fetchData({ pagination: 
+      { startIdx, perPage } });
+
+      console.log(items)
 
     const totalPages = Math.ceil(totalCount / perPage)
 
     return (
       <>
-        {!props.contentType ? (
+        {!props.contentType || props.contentType === "category" ? (
           <ProductsSection
             title={props.pageTitle}
             products={items as ProductCardProps[]}
+            applyIndexStyles={props.contentType === "category" ? false : true}
+            contentType={props.contentType}
           />
         ) : (
           <ArticleSection

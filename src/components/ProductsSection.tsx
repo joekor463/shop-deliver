@@ -6,10 +6,15 @@ const ProductsSection = ({
   title,
   viewAllButton,
   products,
-  applyIndexStyles = true
+  applyIndexStyles = true,
+  contentType,
+}: ProductsSectionProps & {applyIndexStyles?: boolean;
+                           contentType?: string 
+}) => {
   
-}: ProductsSectionProps & {applyIndexStyles?: boolean}) => {
-  console.log(products)
+  const gridClasses =  contentType === "category" 
+    ? "grid-cols-2 md:grid-cols-3"
+    : "grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
   return (
     <section>
       <div
@@ -26,7 +31,7 @@ const ProductsSection = ({
           )}
           
         </div>
-        <ul className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 xl:gap-10 justify-items-center">
+        <ul className={`grid ${gridClasses} gap-4 md:gap-6 xl:gap-10 justify-items-center`}>
           {products.map((item, index) => (
             <li key={item._id} className={applyIndexStyles ? (index >= 3 ? "md:hidden xl:block" : "") : ""} >
               <ProductCard {...item} />
