@@ -9,14 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.4.0",
     "@iminside/react-yandex-maps": "^1.2.7",
     "dotenv": "^16.5.0",
     "mongodb": "^6.17.0",
     "mongoose": "^8.15.2",
     "motion": "^12.16.0",
-    "next": "15.3.3",
+    "next": "^15.5.15",
     "next-images": "^1.8.5",
-    "next-react-svg": "^1.2.0",
+    "next-react-svg": "^1.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

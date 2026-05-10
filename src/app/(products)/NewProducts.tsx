@@ -17,8 +17,10 @@ const NewProducts = async () => {
     );
   } catch (error) {
       return (
-        <ErrorComponent error={error instanceof Error ? error: new Error(String(error))}
-        userMessage="Не удалось загрузить новинки"/>
+        <ErrorComponent
+          error={error instanceof Error ? error : new Error(String(error))}
+          userMessage="Не удалось загрузить новинки"
+        />
       );
     }
 };

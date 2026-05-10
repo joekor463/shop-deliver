@@ -16,11 +16,13 @@ const Purchases = async () => {
         products={items}
       />
     );
-  } catch {
-      <ErrorComponent 
-        error={error instanceof Error ? error: new Error(String(error))}
+  } catch (error) {
+    return (
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
         userMessage="Не удалось загрузить Ваши покупки"
       />
+    );
   }
 };
 

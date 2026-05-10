@@ -16,9 +16,12 @@ const GenericListPage = async ({
 }) => {
   const params = await searchParams;
   const page = params?.page;
-  const defaultItemsPerPage = props.contentType === "category" 
-    ? CONFIG.ITEMS_PER_PAGE_CATEGORY 
-    : CONFIG.ITEMS_PER_PAGE
+
+  const defaultItemsPerPage =
+    props.contentType === "category"
+      ? CONFIG.ITEMS_PER_PAGE_CATEGORY
+      : CONFIG.ITEMS_PER_PAGE;
+
   const itemsPerPage = params?.itemsPerPage || defaultItemsPerPage;
 
   const currentPage = Number(page) || 1;
@@ -26,12 +29,11 @@ const GenericListPage = async ({
   const startIdx = (currentPage - 1) * perPage;
 
   try {
-    const {items, totalCount} = await props.fetchData({ pagination: 
-      { startIdx, perPage } });
+    const { items, totalCount } = await props.fetchData({
+      pagination: { startIdx, perPage },
+    });
 
-      console.log(items)
-
-    const totalPages = Math.ceil(totalCount / perPage)
+    const totalPages = Math.ceil(totalCount / perPage);
 
     return (
       <>
@@ -60,11 +62,13 @@ const GenericListPage = async ({
       </>
     );
   } catch (error) {
-      return (
-        <ErrorComponent error={error instanceof Error ? error: new Error(String(error))}
-        userMessage="Не удалось загрузить продукты"/>
-      );
-    }
+    return (
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
+        userMessage="Не удалось получить элементы пагинации"
+      />
+    );
+  }
 };
 
 export default GenericListPage;

@@ -9,19 +9,17 @@ export async function GET(request: Request) {
 
     const db = await getDB();
 
-    const products = await db
+    const products = (await db
       .collection("products")
       .find({
-        $and:  [
+        $and: [
           {
-             $or: [
-            { title: { $regex: query, $options: "i" } },
-            { description: { $regex: query, $options: "i" } },
+            $or: [
+              { title: { $regex: query, $options: "i" } },
+              { description: { $regex: query, $options: "i" } },
             ],
           },
-          {
-            quantity: {$gt: 0}
-          }         
+          { quantity: { $gt: 0 } },
         ],
       })
       .project({
@@ -29,7 +27,7 @@ export async function GET(request: Request) {
         categories: 1,
         id: 1,
       })
-      .toArray() as SearchProduct[];
+      .toArray()) as SearchProduct[];
 
     if (!products.length) {
       return NextResponse.json([]);
