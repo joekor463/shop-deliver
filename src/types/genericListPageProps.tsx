@@ -13,7 +13,7 @@ export interface GenericListPageProps {
     fetchdata: (options: {
         pagination: { startIdx: number, perPage: number}
     }) => Promise<PaginatedResponse>
-    pageTitle: string
+    pageTitle?: string
     basePath: string    
     contentType?: string
 }

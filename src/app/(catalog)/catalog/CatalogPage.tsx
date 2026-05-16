@@ -197,7 +197,7 @@ const CatalogPage = () => {
         isEditing={isEditing}
         draggedCategory={draggedCategory}
         hoveredCategoryId={hoveredCategoryId}
-        onDragStartAction={handleDragStart}
+        onDragsStartAction={handleDragStart}
         onDragOverAction={handleDragOver}
         onDragLeaveAction={handleDragLeave}
         onDropAction={handleDrop}
