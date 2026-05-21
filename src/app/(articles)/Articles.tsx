@@ -18,8 +18,10 @@ const Articles = async () => {
     );
   } catch (error) {
     return (
-      <ErrorComponent error={error instanceof Error ? error: new Error(String(error))}
-      userMessage="Не удалось загрузить статьи"/>
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
+        userMessage="Не удалось загрузить статьи"
+      />
     );
   }
 };

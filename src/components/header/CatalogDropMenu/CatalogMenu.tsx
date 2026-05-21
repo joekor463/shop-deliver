@@ -1,5 +1,5 @@
 import ErrorComponent from "@/components/ErrorComponent";
-import MiniLoader from "@/components/Miniloader";
+import MiniLoader from "@/components/MiniLoader";
 import { CatalogMenuProps } from "@/types/catalogMenuProps";
 import Link from "next/link";
 import SearchBlock from "../SearchBlock";
@@ -39,7 +39,7 @@ const CatalogMenu = (
             )}
             {isLoading ? (
               <MiniLoader />
-            ) : categories.length > 0 ? (
+            ) : categories && categories.length > 0 ? (
               <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
                 {categories.map((category) => (
                   <Link
