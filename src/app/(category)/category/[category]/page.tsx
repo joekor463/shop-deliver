@@ -61,8 +61,7 @@ const CategoryPage = async ({
         </div>
         <div className="flex flex-col">
           <div className="hidden xl:flex">
-            <FilterControls
-              activeFilter={resolvedSearchParams.filter}
+            <FilterControls              
               basePath={`/category/${category}`}
             />
           </div>
