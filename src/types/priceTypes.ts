@@ -1,10 +1,10 @@
 export interface PriceFilterProps {
-    basePath: string;
-    category: string; 
-    setIsFilterOpenAction?: (value:boolean)=>void;   
+  basePath: string;
+  category: string;
+  setIsFilterOpenAction?: (value: boolean) => void;
 }
 
 export type PriceRange = {
-    min: number;
-    max: number
-}
+  min: number;
+  max: number;
+};

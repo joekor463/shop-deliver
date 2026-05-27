@@ -61,7 +61,7 @@ const CategoryPage = async ({
         </div>
         <div className="flex flex-col">
           <div className="hidden xl:flex">
-            <FilterControls              
+            <FilterControls
               basePath={`/category/${category}`}
             />
           </div>

@@ -14,17 +14,18 @@ const AllArticles = async ({
   searchParams: Promise<{ page?: string; itemsPerPage?: string }>;
 }) => {
   return (
-    <Suspense fallback={<Loader/>}>
+    <Suspense fallback={<Loader />}>
       <GenericListPage
-      searchParams={searchParams}
-      props={{fetchData: ({ pagination: { startIdx, perPage } }) => fetchArticles({ pagination: { startIdx, perPage } }),
-        pageTitle: " Все статьи",
-        basePath: "/articles",        
-        contentType: "articles",
-      }}
-    />
+        searchParams={searchParams}
+        props={{
+          fetchData: ({ pagination: { startIdx, perPage } }) =>
+            fetchArticles({ pagination: { startIdx, perPage } }),
+          pageTitle: " Все статьи",
+          basePath: "/articles",
+          contentType: "articles",
+        }}
+      />
     </Suspense>
- 
   );
 };
 

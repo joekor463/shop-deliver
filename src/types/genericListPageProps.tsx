@@ -1,19 +1,18 @@
-import { ArticleCardProps} from "./articles"
-import { ProductCardProps } from "./product"
+import { ArticleCardProps } from "./articles";
+import { ProductCardProps } from "./product";
 
-type ContentItem = ProductCardProps | ArticleCardProps
+type ContentItem = ProductCardProps | ArticleCardProps;
 
 interface PaginatedResponse {
-    items: ContentItem[],
-    totalCount: number,
-
+  items: ContentItem[];
+  totalCount: number;
 }
 
 export interface GenericListPageProps {
-    fetchdata: (options: {
-        pagination: { startIdx: number, perPage: number}
-    }) => Promise<PaginatedResponse>
-    pageTitle?: string
-    basePath: string    
-    contentType?: string
+  fetchData: (options: {
+    pagination: { startIdx: number; perPage: number };
+  }) => Promise<PaginatedResponse>;
+  pageTitle?: string;
+  basePath: string;
+  contentType?: string;
 }

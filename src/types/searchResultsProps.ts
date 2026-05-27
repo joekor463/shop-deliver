@@ -1,8 +1,8 @@
 import { SearchProduct } from "./searchProduct";
 
-export interface SearchReultsProps {
-    isLoading: boolean;
-    query: string;
-    groupedProducts: {category: string; products: SearchProduct[]}[];
-    resetSearch: () => void
+export interface SearchResultsProps {
+  isLoading: boolean;
+  query: string;
+  groupedProducts: { category: string; products: SearchProduct[] }[];
+  resetSearch: () => void;
 }

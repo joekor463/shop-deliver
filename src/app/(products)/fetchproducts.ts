@@ -30,7 +30,7 @@ const fetchProductsByTag = async (
       items: data.products || data,
       totalCount: data.totalCount || data.length,
     };
-  } catch (err) {    
+  } catch (err) {
     throw err;
   }
 };
