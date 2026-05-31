@@ -5,12 +5,12 @@ import { buttonStyles, formStyles } from "../styles"
 
 
 
-const RegFormFooter = ({isFormValid} : {isFormValid : boolean}) => {
+const RegFormFooter = ({isFormValid, isLoading} : {isFormValid : boolean, isLoading: boolean}) => {
     return (
         <div>
             <button
-                type="submit"
-                
+                disabled={isLoading}
+                type="submit"                
                 className={`${buttonStyles.base} ${isFormValid ? buttonStyles.active : 
                     buttonStyles.inactive}`}
             >
