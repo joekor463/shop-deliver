@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import PhoneInput from "../PhoneInput";
+import PhoneInput from "../../PhoneInput";
 import PersonInput from "../PersonInput";
-import PasswordInput from "../PasswordInput";
+import PasswordInput from "../../PasswordInput"
 import DateInput from "../DateInput";
 import SelectRegion from "../SelectRegion";
 import SelectCity from "../SelectCity";
